@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APIsAndJSON
 {
@@ -11,14 +6,14 @@ namespace APIsAndJSON
     {
         public static void Convo()
         {
-            var client = new HttpClient();  
+            var client = new HttpClient();
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Console.WriteLine($"Ron says: \n{GetSwansonQuote(client)}\n");
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
                 Console.WriteLine($"Kanye says: \n{GetKanyeQuote(client)}\n");
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
             }
         }
 
@@ -26,8 +21,8 @@ namespace APIsAndJSON
         {
             var jText = client.GetStringAsync("https://ron-swanson-quotes.herokuapp.com/v2/quotes").Result;
 
-            var quote = JArray.Parse(jText).ToString().Replace('[', ' ').Replace(']', ' ').Replace('"', ' ').Trim();
-           
+            var quote = jText.Trim('[', ']').Trim('"');
+
             return quote;
         }
 

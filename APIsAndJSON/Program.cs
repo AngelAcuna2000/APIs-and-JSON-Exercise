@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using static System.Net.WebRequestMethods;
-
-namespace APIsAndJSON
+﻿namespace APIsAndJSON
 {
     public class Program
     {
